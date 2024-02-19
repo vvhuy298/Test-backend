@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<ruleset name="CUSTOM RULESET">
+  <description>My custom rule set</description>
+
+  <rule ref="rulesets/codesize.xml" >
+    <exclude name="TooManyMethods"/>
+    <exclude name="TooManyPublicMethods"/>
+    <exclude name="ExcessivePublicCount"/>
+    <exclude name="CyclomaticComplexity"/>
+    <exclude name="ExcessiveClassComplexity"/>
+  </rule>
+
+  <rule ref="rulesets/controversial.xml" />
+
+  <rule ref="rulesets/design.xml">
+    <exclude name="CouplingBetweenObjects" />
+  </rule>
+
+  <rule ref="rulesets/unusedcode.xml" />
+
+  <rule ref="rulesets/naming.xml">
+    <exclude name="ShortVariable" />
+    <exclude name="ShortMethodName" />
+    <exclude name="LongVariable" />
+    <exclude name="LongClassName" />
+  </rule>
+
+  <rule ref="rulesets/cleancode.xml">
+    <exclude name="ElseExpression" />
+    <exclude name="StaticAccess" />
+  </rule>
+
+  <exclude-pattern>/.phpstorm.meta.php</exclude-pattern>
+  <exclude-pattern>/_ide_helper.php</exclude-pattern>
+  <exclude-pattern>/bootstrap/</exclude-pattern>
+  <exclude-pattern>/config/</exclude-pattern>
+  <exclude-pattern>/database/</exclude-pattern>
+  <exclude-pattern>/node_modules/</exclude-pattern>
+  <exclude-pattern>/public/</exclude-pattern>
+  <exclude-pattern>/resources/</exclude-pattern>
+  <exclude-pattern>/routes/</exclude-pattern>
+  <exclude-pattern>/storage/</exclude-pattern>
+  <exclude-pattern>/vendor/</exclude-pattern>
+  <exclude-pattern>/server.php</exclude-pattern>
+  <exclude-pattern>/app/Console/Kernel.php</exclude-pattern>
+  <exclude-pattern>/app/Exceptions/</exclude-pattern>
+  <exclude-pattern>/tests/</exclude-pattern>
+</ruleset>
