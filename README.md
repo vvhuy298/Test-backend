@@ -1,6 +1,8 @@
+# SUMMARY
+Example project run with PHP 8 and Laravel 9 as REST API
 ## Requirement
 
-- PHP 8+
+- Make pagkage
 - Docker
 - Docker Compose
 
@@ -15,6 +17,7 @@ Copy all files inside the bin folder to the root project directory (libiconv2.dl
 - Mac/Linux: install `make` package
 
 ### How do get set up?
+Check Makefile for more details and command
 ```shell
 $ git clone
 $ cd <folder_name>
