@@ -18,6 +18,7 @@ Copy all files inside the bin folder to the root project directory (libiconv2.dl
 
 ### How do get set up?
 Check Makefile for more details and command
+*Use Mailhog (http://localhost:8025) for email confirm incase needed
 ```shell
 $ git clone
 $ cd <folder_name>
