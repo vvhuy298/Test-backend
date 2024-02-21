@@ -26,8 +26,8 @@ class MovieController extends Controller
             $movies->selectSub($favorited, 'favorited');
         }
 
-        if($search != ''){
-            $movies->where('title', 'LIKE', '%'.$search.'%');
+        if ($search != '') {
+            $movies->where('title', 'LIKE', '%' . $search . '%');
         }
 
         $totalMovie = $movies->count();

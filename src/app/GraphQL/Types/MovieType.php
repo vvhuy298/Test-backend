@@ -17,14 +17,6 @@ class MovieType extends GraphQLType
 
     public function fields(): array
     {
-        /* type MovieType = {
-            imdbid: string;
-            poster: string;
-            title: string;
-            uuid: string;
-            year: string;
-            favorited: boolean;
-          }; */
         return [
             'imdbid' => [
                 'type' => Type::nonNull(Type::string()),
