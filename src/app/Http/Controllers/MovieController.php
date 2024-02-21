@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $offset = $request->input('offset', 0);
+        $limit = $request->input('limit', 10);
+        $search = $request->input('search', '');
+
         $movies = Movie::select('movies.*');
         $user = Auth::user();
         if ($user) {
@@ -21,14 +25,33 @@ class MovieController extends Controller
                 ->getQuery();
             $movies->selectSub($favorited, 'favorited');
         }
+
+        if($search != ''){
+            $movies->where('title', 'LIKE', '%'.$search.'%');
+        }
+
+        $totalMovie = $movies->count();
+        $movies = $movies->offset($offset)->limit($limit);
+        $moviesPageNumber = $offset >= $totalMovie ? 1 : floor($offset / $limit) + 1;
+
+        $paginationMeta = [
+            'current_page' => $moviesPageNumber,
+            'last_page' => ceil($totalMovie / $limit),
+            'from' => (($moviesPageNumber - 1) * $limit) + 1,
+            'to' => ($moviesPageNumber * $limit) >  $totalMovie ? $totalMovie : $moviesPageNumber * $limit,
+            'total' => $totalMovie,
+        ];
+
         $data = $movies->get()
             ->map(function ($movie) {
                 $movie->favorited = $movie->favorited ? true : false;
                 return $movie;
             });
+
         return response()->json([
             'status' => 'success',
             'movies' => $data,
+            'meta' => $paginationMeta,
         ]);
     }
 }
