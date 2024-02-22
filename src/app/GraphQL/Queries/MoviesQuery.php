@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\GraphQL\Queries;
 
 use App\Models\Movie;
@@ -15,21 +17,12 @@ class MoviesQuery extends Query
 
     public function type(): Type
     {
-        
+
         return Type::listOf(GraphQL::type('Movie'));
     }
 
     public function args(): array
     {
-        /* type MovieType = {
-            imdbid: string;
-            poster: string;
-            title: string;
-            uuid: string;
-            year: string;
-            favorited: boolean;
-          }; */
-          
         return [
             'imdbid' => [
                 'name' => 'id',
