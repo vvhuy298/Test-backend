@@ -11,6 +11,12 @@ class MovieController extends Controller
 {
     public function index(Request $request)
     {
+        $request->validate([
+            'offset' => 'nullable|numeric',
+            'limit' => 'nullable|numeric',
+            'search' => 'nullable|string',
+        ]);
+
         $offset = $request->input('offset', 0);
         $limit = $request->input('limit', 10);
         $search = $request->input('search', '');
